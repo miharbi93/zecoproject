@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<link th:href="@{bootstrap.css}" rel="stylesheet">
+<link th:href="@{font-awesome.css}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" th:href="@{font-awesome/kuku/css/font-awesome.min.css}" type="text/css">
+<head>
+    <title>Online System</title>
+    <style>
+		.head1 {
+			font-size:40px;
+			color:#009900;
+			font-weight:bold;
+		}
+		.head2 {
+			font-size:17px;
+			margin-left:10px;
+			margin-bottom:15px;
+		}
+		body {
+			margin: 0 auto;
+			background-position:center;
+			background-size: contain;
+		}
+
+		.menu {
+			position: sticky;
+			top: 0;
+			background-color: #009900;
+			padding:10px 0px 10px 0px;
+			color:white;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.menu a {
+			float: left;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 20px;
+		}
+		.menu-log {
+			right: auto;
+			float: right;
+		}
+		footer {
+			width: 100%;
+			bottom: 0px;
+			height:70px;
+			background-color: #000;
+			color: #fff;
+			position: absolute;
+			padding-top:20px;
+			padding-bottom:50px;
+			text-align:center;
+			font-size:10px;
+			font-weight:bold;
+		}
+
+    </style>
+</head>
+
+<body>
+
+<!-- Header Section -->
+<header>
+</header>
+
+<!-- Menu Navigation Bar -->
+<nav class="menu">
+    <a class="#">KHA ONLINE ORDERING</a>
+    <a th:href="@{/showCustomer}">Home</a>
+    <a th:href="@{/showCustomer}">Customer List</a>
+    <a th:href="@{/add-application}">Customer Application</a>
+    <a th:href="@{/showapplication}">Customer Application List</a>
+    <div class="menu-log">
+        <a href="#login">Logout</a>
+    </div>
+</nav>
+
+<!-- Body section -->
+<main class="body_sec">
+    <section id="Content">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="mcw">
+                    <!--navigation here-->
+                    <!--main content view-->
+
+                    <div class="cv">
+                        <div>
+                            <div class="inbox">
+                                <div class="inbox-sb"></div>
+                                <div class="inbox-bx container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 col-md-6 col-lg-12 bg-light mt-4">
+                                            <div class="col-md-12 bg-light text-dark">
+
+                                                <div class="col-md-12 bg-light mt-2"></div>
+
+                                            </div>
+
+                                            <div class="col-md-12 bg-light mt-1"><h3>&nbsp;
+                                                <a th:href="@{/add-customer}" class="btn btn-info"> Add Customer</a></h3></div>
+
+                                        </div>
+                                        <div class="col-md-12 bg-light mt-4">
+
+                                            <div class="vh-50 d-flex justify-content-center align-items-center">
+                                                <div class="row d-flex justify-content-center">
+                                                    <div class="col-12 col-md-6 col-lg-12 col-sm-12">
+                                                        <div class="border border-3 border-danger"></div>
+                                                        <div class="card bg-white shadow-lg">
+                                                            <div class="card-body p-5">
+                                                                <h4 class="fw-bold mb-2 text-uppercase ">customer
+                                                                    list</h4>
+                                                                <table class="table table-bordered">
+                                                                    <thead class="text-center">
+                                                                    <th>CUSTOMER ID</th>
+                                                                    <th>Customer Name</th>
+                                                                    <th>Address</th>
+                                                                    <th>Email</th>
+                                                                    <th>Phone</th>
+                                                                    <th>Action</th>
+                                                                    </thead>
+
+                                                                    <tbody>
+
+                                                                    <tr th:each="ibra: ${customers}">
+                                                                        <td th:text="${ibra.custID}"></td>
+                                                                        <td th:text="${ibra.custName}"></td>
+                                                                        <td th:text="${ibra.custLocation}"></td>
+                                                                        <td th:text="${ibra.custEmail}"></td>
+                                                                        <td th:text="${ibra.custPhone}"></td>
+                                                                        <td>
+                                                                            <a href="">
+                                                                                <button type="button"
+                                                                                        class="btn btn-primary"
+                                                                                        name="view"><i
+                                                                                        class="fa fa-eye"></i></button>
+                                                                            </a>
+
+                                                                            <a th:href="@{/update(custID=${ibra.custID})}">
+                                                                                <button type="button"
+                                                                                        class="btn btn-success"><i
+                                                                                        class="fa fa-edit"></i></button>
+                                                                            </a>
+
+                                                                            <a th:href="@{/deleteCustomer(custID=${ibra.custID})}">
+                                                                                <button type="button"
+                                                                                        class="btn btn-danger"><i
+                                                                                        class="fa fa-trash"></i>
+                                                                                </button>
+                                                                            </a>
+
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    </tbody>
+
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </section>
+</main>
+
+<!-- Footer Section -->
+<footer>Footer Section</footer>
+</body>
+</html>
+
+
+
